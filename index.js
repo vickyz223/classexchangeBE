@@ -1,8 +1,11 @@
 require("dotenv").config()
-const express = require('express'); 
+const express = require('express')
 const mongoose = require('mongoose')
+
 const classRouter = require('./controllers/classes')
 const exchangeRouter = require('./controllers/exchanges')
+const usersRouter = require('./controllers/users')
+
 const cors = require('cors')
 
 const app = express(); 
@@ -14,6 +17,7 @@ mongoose.connect(mongoUrl)
 
 app.use('/api/classes', classRouter)
 app.use('/api/exchanges', exchangeRouter)
+app.use('/api/users', usersRouter)
 
 
 const PORT = 3001

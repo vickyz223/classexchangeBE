@@ -11,17 +11,16 @@ POST http://localhost:3001/api/exchanges
 Content-Type: application/json
 
 {
-    "user": "1",
     "finding": "PHYSICS 1A", 
     "exchanging": ["COM SCI 32", "COM SCI 31"], 
-    "description": "everyday i wake up"
+    "description": "everyday i wake up",
+    "userId": "62d1fa5263971e4bf8583275"
 }
 ###
-POST http://localhost:3001/api/exchanges
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
     "username": "root", 
-    "name": "user1",
     "password": "pass1" 
 }
