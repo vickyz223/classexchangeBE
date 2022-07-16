@@ -24,3 +24,22 @@ Content-Type: application/json
     "username": "root", 
     "password": "pass1" 
 }
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "root", 
+    "password": "pass1" 
+}
+###
+POST http://localhost:3001/api/exchanges
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyZDFmYTUyNjM5NzFlNGJmODU4MzI3NSIsImlhdCI6MTY1NzkzNDQ1NX0.uxx2Hk5oyHVyjSbDIjUjDBMT29IlP7DYEuBJwT4XY1w
+
+{
+    "finding": "PHYSICS 1A", 
+    "exchanging": ["COM SCI 32", "COM SCI 31"], 
+    "description": "everyday i wake up",
+    "userId": "62d1706eebc276f98a3f31a2"
+}

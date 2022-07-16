@@ -7,6 +7,7 @@ const exchangeRouter = require('./controllers/exchanges')
 const usersRouter = require('./controllers/users')
 
 const cors = require('cors')
+const loginRouter = require("./controllers/login")
 
 const app = express(); 
 
@@ -18,6 +19,7 @@ mongoose.connect(mongoUrl)
 app.use('/api/classes', classRouter)
 app.use('/api/exchanges', exchangeRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 
 const PORT = 3001
