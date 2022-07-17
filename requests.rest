@@ -35,7 +35,7 @@ Content-Type: application/json
 ###
 POST http://localhost:3001/api/exchanges
 Content-Type: application/json
-Authorization: bearer eyjhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyZDFmYTUyNjM5NzFlNGJmODU4MzI3NSIsImlhdCI6MTY1Nzk3NzY5M30.AuinMG3ZlUVOkVMG5B3p3zpLD-zkul_CsLWeIkuSTRY
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyZDFmYTUyNjM5NzFlNGJmODU4MzI3NSIsImlhdCI6MTY1ODA3MDczMn0.Ciq0GqseyN7msz8VUUDB2ySKjl-onnP3u6yyqrryw0M
 
 {
     "finding": "MATH 61", 
