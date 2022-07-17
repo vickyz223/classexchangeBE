@@ -8,7 +8,6 @@ classRouter.get('/', async (request, response) => {
 
 classRouter.post('/', async (request, response) => {
     const body = request.body; 
-    console.log(body)
     const newClass = new Class({
         name: body.name
     })

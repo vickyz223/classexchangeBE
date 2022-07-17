@@ -13,7 +13,6 @@ const getTokenFrom = request => {
 
 exchangeRouter.get('/', async (request, response) => {
     const exchanges = await Exchange.find({}).populate('user', {username: 1}); 
-    console.log(exchanges)
     response.json(exchanges); 
 })
 
