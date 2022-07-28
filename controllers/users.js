@@ -8,8 +8,13 @@ usersRouter.get('/', async (req, res) => {
     res.json(users); 
 })
 
+usersRouter.get("/:id", async (req, res) => {
+  const users = await User.findById(req.params.id).populate('exchanges'); 
+  res.json(users);
+});
+
 usersRouter.post('/', async (request, response) => {
-    const { username, password } = request.body; 
+    const { username, password, contacts } = request.body; 
     const existingUser = await User.findOne({username})
     
     if (existingUser) {
@@ -17,11 +22,15 @@ usersRouter.post('/', async (request, response) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10)
+    console.log(request.body)
     const user = new User ({
         username, 
-        passwordHash
+        passwordHash,
+        contacts
     })
-    const saved = await user.save(); 
+    console.log("bruh2");
+    const saved = await user.save();
+    console.log("bruh3"); 
     response.status(201).json(saved); 
 })
 

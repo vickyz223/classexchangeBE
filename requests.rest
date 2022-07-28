@@ -1,41 +1,28 @@
-GET http://localhost:3001/api/classes
-###
-POST http://localhost:3001/api/classes
-Content-Type: application/json
-
-{
-    "name": "COM SCI 33"
-}
-###
-POST http://localhost:3001/api/exchanges
-Content-Type: application/json
-
-{
-    "finding": "PHYSICS 1A", 
-    "exchanging": ["COM SCI 32", "COM SCI 31"], 
-    "description": "everyday i wake up",
-    "userId": "62d1fa5263971e4bf8583275"
-}
-###
+### Create new user
 POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "root", 
-    "password": "pass1" 
+    "username": "user", 
+    "password": "pass",  
+    "contacts": ["email","abc@gmail.com"]
 }
-###
+
+### Get user
+GET http://localhost:3001/api/users/62d9559f0e892731c7a94757
+
+### Login to website
 POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-    "username": "root", 
-    "password": "pass1" 
+    "username": "user", 
+    "password": "pass" 
 }
-###
+### Posting new with login
 POST http://localhost:3001/api/exchanges
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyZDFmYTUyNjM5NzFlNGJmODU4MzI3NSIsImlhdCI6MTY1ODA3MDczMn0.Ciq0GqseyN7msz8VUUDB2ySKjl-onnP3u6yyqrryw0M
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyZDFmYTUyNjM5NzFlNGJmODU4MzI3NSIsImlhdCI6MTY1ODA4MTY4NH0.dGuOIFtWFjHq79FqHn3EwnD71CBIAbcQvic5nooZUWg
 
 {
     "finding": "MATH 61", 
@@ -43,3 +30,5 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb
     "description": "everyday i wake up",
     "userId": "62d1706eebc276f98a3f31a2"
 }
+###
+DELETE http://localhost:3001/api/exchanges/

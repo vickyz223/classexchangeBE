@@ -1,15 +1,6 @@
 const exchangeRouter = require('express').Router(); 
 const Exchange = require('../models/exchange'); 
-const User = require('../models/user')
-const jwt = require('jsonwebtoken')
-
-const getTokenFrom = request => {
-  const authorization = request.get('authorization')
-  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
-    return authorization.substring(7)
-  }
-  return null
-}
+const ObjectId = require('mongodb').ObjectId
 
 exchangeRouter.get('/', async (request, response) => {
     const exchanges = await Exchange.find({}).populate('user', {username: 1}); 
@@ -18,12 +9,7 @@ exchangeRouter.get('/', async (request, response) => {
 
 exchangeRouter.post('/', async (request, response) => {
     const body = request.body; 
-    console.log(request.token)
-    const decodedToken = jwt.verify(request.token, process.env.SECRET)
-    if (!decodedToken.id) {
-        return response.status(401).json({ error: 'token missing or invalid' })
-    }
-    const user = await User.findById(decodedToken.id)
+    const user = request.user
 
     if (body == undefined) {
         request.status(400).json({error: 'content missing'})
@@ -42,6 +28,20 @@ exchangeRouter.post('/', async (request, response) => {
     response.json(posted); 
 })
 
-exchangeRouter.post
+exchangeRouter.delete('/:id', async (request, response) => {
+    const id = request.params.id
+    console.log(id)
+    const exchange = await Exchange.findById(ObjectId(id))
+    console.log(exchange.user._id)
+    console.log(request.user._id)
+    
+    
+    if (exchange.user._id.toString() == request.user._id.toString()) {
+        await Exchange.deleteOne(ObjectId(id))
+        response.status(204).end()
+    }
+
+    response.status(401).end()
+})
 
 module.exports = exchangeRouter;

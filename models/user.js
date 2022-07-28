@@ -6,6 +6,9 @@ const userSchema = new mongoose.Schema({
     exchanges: [{
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Exchange'
+    }],
+    contacts: [{
+        type: String
     }]
 })
 

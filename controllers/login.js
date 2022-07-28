@@ -19,7 +19,7 @@ loginRouter.post('/', async (req, res) => {
     }
     try {
         const token = jwt.sign(userForToken, process.env.SECRET)
-        res.status(200).send({ token, username: user.username, name: user.name })
+        res.status(200).send({ token, username: user.username, id: user._id });
     } catch(error) {
         res.status(401).json({error: "Your session is invalid or expired."})
     }

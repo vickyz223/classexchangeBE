@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 
 app.use('/api/classes', classRouter)
-app.use('/api/exchanges', exchangeRouter)
+app.use('/api/exchanges', middleware.userExtractor, exchangeRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
