@@ -7,6 +7,15 @@ exchangeRouter.get('/', async (request, response) => {
     response.json(exchanges); 
 })
 
+exchangeRouter.get("/:id", async (req, response) => {
+    const exchange = await Exchange.findById(req.params.id).populate("user", {username: 1, contacts: 1}); 
+    if (exchange) {
+        response.json(exchange)
+    } else {
+        response.status(400).json({error: "The exchange does not exist."})
+    }
+})
+
 exchangeRouter.post('/', async (request, response) => {
     const body = request.body; 
     const user = request.user
@@ -30,18 +39,10 @@ exchangeRouter.post('/', async (request, response) => {
 
 exchangeRouter.delete('/:id', async (request, response) => {
     const id = request.params.id
-    console.log(id)
     const exchange = await Exchange.findById(ObjectId(id))
-    console.log(exchange.user._id)
-    console.log(request.user._id)
     
-    
-    if (exchange.user._id.toString() == request.user._id.toString()) {
-        await Exchange.deleteOne(ObjectId(id))
-        response.status(204).end()
-    }
-
-    response.status(401).end()
+    await Exchange.deleteOne(exchange);
+    response.status(204).end();
 })
 
 module.exports = exchangeRouter;

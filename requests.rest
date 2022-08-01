@@ -9,7 +9,10 @@ Content-Type: application/json
 }
 
 ### Get user
-GET http://localhost:3001/api/users/62d9559f0e892731c7a94757
+GET http://localhost:3001/api/users/62e29586541c1b11e41d0c96
+
+### Get post 
+GET http://localhost:3001/api/exchanges/62e29586541c1b11e41d0c96
 
 ### Login to website
 POST http://localhost:3001/api/login
@@ -32,3 +35,11 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb
 }
 ###
 DELETE http://localhost:3001/api/exchanges/
+### 
+PUT http://localhost:3001/api/users/62e29586541c1b11e41d0c96
+Content-Type: application/json
+
+{
+    "username": "user",
+    "contacts": ["bruhdfasdfsadfsaf", "brungusi"]
+}

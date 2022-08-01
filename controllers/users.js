@@ -9,8 +9,8 @@ usersRouter.get('/', async (req, res) => {
 })
 
 usersRouter.get("/:id", async (req, res) => {
-  const users = await User.findById(req.params.id).populate('exchanges'); 
-  res.json(users);
+  const user = await User.findById(req.params.id).populate('exchanges'); 
+  res.json(user);
 });
 
 usersRouter.post('/', async (request, response) => {
@@ -28,10 +28,20 @@ usersRouter.post('/', async (request, response) => {
         passwordHash,
         contacts
     })
-    console.log("bruh2");
     const saved = await user.save();
-    console.log("bruh3"); 
     response.status(201).json(saved); 
 })
+
+usersRouter.put("/:id", async (req, res) => {
+    console.log("hre")
+    const user = req.body 
+    const id = req.params.id
+    console.log(id)
+    console.log(user)
+    const updated = await User.updateOne({id: id}, {$set: {contacts: user.contacts}})
+    console.log(updated)
+    const newUser = await User.findById(id).populate("exchanges")
+    res.json(newUser)
+});
 
 module.exports = usersRouter
