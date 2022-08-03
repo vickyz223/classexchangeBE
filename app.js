@@ -13,10 +13,12 @@ const middleware = require('./utils/middleware')
 
 mongoose.connect(config.MONGO_URI)
 
+app.use(express.static("build"));
 app.use(middleware.tokenExtractor)
 app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
+
 
 app.use('/api/classes', classRouter)
 app.use('/api/exchanges', middleware.userExtractor, exchangeRouter)
