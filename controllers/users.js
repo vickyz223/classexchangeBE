@@ -33,14 +33,16 @@ usersRouter.post('/', async (request, response) => {
 })
 
 usersRouter.put("/:id", async (req, res) => {
-    console.log("hre")
     const user = req.body 
     const id = req.params.id
-    console.log(id)
-    console.log(user)
-    const updated = await User.updateOne({id: id}, {$set: {contacts: user.contacts}})
-    console.log(updated)
+    console.log("id", id)
+    const updated = await User.findByIdAndUpdate(
+      id,
+      { contacts: user.contacts }
+    );
+    console.log("updated", updated)
     const newUser = await User.findById(id).populate("exchanges")
+    console.log("newUser", newUser)
     res.json(newUser)
 });
 

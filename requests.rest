@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Get user
-GET http://localhost:3001/api/users/62e29586541c1b11e41d0c96
+GET http://localhost:3001/api/users/62ea70acbaa098d726640ee5
 
 ### Get post 
 GET http://localhost:3001/api/exchanges/62e29586541c1b11e41d0c96
@@ -19,8 +19,8 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-    "username": "user", 
-    "password": "pass" 
+    "username": "penis", 
+    "password": "man" 
 }
 ### Posting new with login
 POST http://localhost:3001/api/exchanges
