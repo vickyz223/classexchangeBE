@@ -33,6 +33,7 @@ exchangeRouter.post('/', async (request, response) => {
     const posted = await exchange.save(); 
     user.exchanges = user.exchanges.concat(posted._id)
     await user.save(); 
+    console.log(posted, "POSTPOSTPOST")
 
     response.json(posted); 
 })
